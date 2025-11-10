@@ -17,8 +17,13 @@ endif()
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib")
 
-add_executable(App src/main.cpp src/app.cpp)
-target_include_directories(App PUBLIC "${CMAKE_SOURCE_DIR}/src")
+# Build the core library
+add_library(core STATIC src/core/app.cpp)
+target_include_directories(core PRIVATE "${CMAKE_SOURCE_DIR}/src/core")
+
+# Create the app executable linking the core library
+add_executable(App src/main.cpp)
+target_link_libraries(App PRIVATE core)
 
 target_compile_options(App PRIVATE
     $<$<CONFIG:Debug>:-O0>
