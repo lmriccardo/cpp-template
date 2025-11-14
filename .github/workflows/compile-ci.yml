@@ -8,7 +8,7 @@ on:
 
 jobs:
   compile:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,3 +24,7 @@ jobs:
         run: cmake --build build
       - name: Run App
         run: ./bin/App
+      - name: Run CTests
+        run: |
+          cd build
+          ctest --output-on-failure

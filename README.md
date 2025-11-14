@@ -7,11 +7,15 @@ A ready-to-use **C++ development environment** with *VS Code Devcontainers*, pre
 ├── .github/workflows/compile-ci.yml # GitHub Actions workflow
 ├── .devcontainer/devcontainer.json  # Devcontainer JSON definition
 ├── cmake/                           # (Optional) Custom CMake modules
+│   └── FetchGTest.cmake
 ├── src/
 │   ├── core/
 │   │   ├── app.cpp                  # Core application source
 │   │   ├── app.hpp                  # Header file
 │   └── main.cpp                     # Application entry point
+├── test/                            # Test folder
+│   ├── CMakeLists.txt
+│   └── app_gtest.cpp
 ├── CMakeLists.txt                   # Main CMake configuration
 ├── Dockerfile                       # Docker image creation file
 └── README.md
