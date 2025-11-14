@@ -1,5 +1,11 @@
 # C++ DevContainer Template
 
+<p align="center">
+  <a href="https://github.com/lmriccardo/cpp-template/actions/workflows/compile-ci.yml">
+    <img src="https://github.com/lmriccardo/cpp-template/actions/workflows/compile-ci.yml/badge.svg" alt="Simple Compilation Test">
+  </a>
+</p>
+
 A ready-to-use **C++ development environment** with *VS Code Devcontainers*, pre-configured for rapid development using the *cmake* build system. This is the structure of the template:
 
 ```
