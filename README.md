@@ -8,9 +8,10 @@ A ready-to-use **C++ development environment** with *VS Code Devcontainers*, pre
 ├── .devcontainer/devcontainer.json  # Devcontainer JSON definition
 ├── cmake/                           # (Optional) Custom CMake modules
 ├── src/
-│   ├── main.cpp                     # Application entry point
-│   ├── app.cpp                      # Core application source
-│   └── app.hpp                      # Header file
+│   ├── core/
+│   │   ├── app.cpp                  # Core application source
+│   │   ├── app.hpp                  # Header file
+│   └── main.cpp                     # Application entry point
 ├── CMakeLists.txt                   # Main CMake configuration
 ├── Dockerfile                       # Docker image creation file
 └── README.md

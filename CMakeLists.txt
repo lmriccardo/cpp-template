@@ -12,6 +12,14 @@ add_compile_options(-Wall -Wextra -pedantic)
 # Append the cmake submodules folder 
 if(EXISTS "${CMAKE_SOURCE_DIR}/cmake")
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+    # For each .cmake file include it to make if effective
+    file(GLOB ALL_CMAKE_FILES "${CMAKE_MODULE_PATH}/*.cmake")
+    foreach(FILE_PATH IN LISTS ALL_CMAKE_FILES)
+        get_filename_component(BASENAME "${FILE_PATH}" NAME_WE)
+        message(STATUS "Including CMake module: ${BASENAME}")
+        include("${BASENAME}")
+    endforeach()
 endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
@@ -19,7 +27,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib")
 
 # Build the core library
 add_library(core STATIC src/core/app.cpp)
-target_include_directories(core PRIVATE "${CMAKE_SOURCE_DIR}/src/core")
+target_include_directories(core PUBLIC "${CMAKE_SOURCE_DIR}/src/core")
 
 # Create the app executable linking the core library
 add_executable(App src/main.cpp)
